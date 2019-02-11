@@ -1,0 +1,1720 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/BLOQUES_EM_FPO_2018_F_0.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[3.35738910799,-73.3004408958],[16.331220977,-58.9006596073]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_BLOQUES_EM_FPO_2018_F_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CAMPO'] !== null ? Autolinker.link(String(feature.properties['CAMPO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BLOQUES'] !== null ? Autolinker.link(String(feature.properties['BLOQUES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UBICACION'] !== null ? Autolinker.link(String(feature.properties['UBICACION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_ASIGN'] !== null ? Autolinker.link(String(feature.properties['AREA_ASIGN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP_MIXTA'] !== null ? Autolinker.link(String(feature.properties['EMP_MIXTA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAIS'] !== null ? Autolinker.link(String(feature.properties['PAIS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ETIQUETA</th>\
+                        <td>' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['API'] !== null ? Autolinker.link(String(feature.properties['API'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP1'] !== null ? Autolinker.link(String(feature.properties['EMP1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PORC_1'] !== null ? Autolinker.link(String(feature.properties['PORC_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAW1'] !== null ? Autolinker.link(String(feature.properties['PAW1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BAND1'] !== null ? Autolinker.link(String(feature.properties['BAND1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP2'] !== null ? Autolinker.link(String(feature.properties['EMP2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PORC_2'] !== null ? Autolinker.link(String(feature.properties['PORC_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAW2'] !== null ? Autolinker.link(String(feature.properties['PAW2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BAND2'] !== null ? Autolinker.link(String(feature.properties['BAND2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP3'] !== null ? Autolinker.link(String(feature.properties['EMP3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PORC_3'] !== null ? Autolinker.link(String(feature.properties['PORC_3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAW3'] !== null ? Autolinker.link(String(feature.properties['PAW3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BAND3'] !== null ? Autolinker.link(String(feature.properties['BAND3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP4'] !== null ? Autolinker.link(String(feature.properties['EMP4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PORC_4'] !== null ? Autolinker.link(String(feature.properties['PORC_4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAW4'] !== null ? Autolinker.link(String(feature.properties['PAW4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BAND4'] !== null ? Autolinker.link(String(feature.properties['BAND4'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMP5'] !== null ? Autolinker.link(String(feature.properties['EMP5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PORC_5'] !== null ? Autolinker.link(String(feature.properties['PORC_5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAW5'] !== null ? Autolinker.link(String(feature.properties['PAW5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BAND5'] !== null ? Autolinker.link(String(feature.properties['BAND5'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CARACTERIS'] !== null ? Autolinker.link(String(feature.properties['CARACTERIS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUP_CERKM2'] !== null ? Autolinker.link(String(feature.properties['SUP_CERKM2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AEXP_KM2'] !== null ? Autolinker.link(String(feature.properties['AEXP_KM2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_KM2'] !== null ? Autolinker.link(String(feature.properties['AREA_KM2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBSERV'] !== null ? Autolinker.link(String(feature.properties['OBSERV'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MAPA'] !== null ? Autolinker.link(String(feature.properties['MAPA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BLOQUES_EM_FPO_2018_F_0_0(feature) {
+            switch(String(feature.properties['ETIQUETA'])) {
+                case '1':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(88,209,191,1.0)',
+            }
+                    break;
+                case '10':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(136,25,233,1.0)',
+            }
+                    break;
+                case '11':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(198,129,227,1.0)',
+            }
+                    break;
+                case '12':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,135,193,1.0)',
+            }
+                    break;
+                case '13':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,215,139,1.0)',
+            }
+                    break;
+                case '14':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(81,120,219,1.0)',
+            }
+                    break;
+                case '15':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,83,65,1.0)',
+            }
+                    break;
+                case '16':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,236,163,1.0)',
+            }
+                    break;
+                case '18':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,70,208,1.0)',
+            }
+                    break;
+                case '2':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,229,94,1.0)',
+            }
+                    break;
+                case '20':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,206,62,1.0)',
+            }
+                    break;
+                case '26':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,224,110,1.0)',
+            }
+                    break;
+                case '28':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(83,123,204,1.0)',
+            }
+                    break;
+                case '3':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(32,200,20,1.0)',
+            }
+                    break;
+                case '34':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(95,202,68,1.0)',
+            }
+                    break;
+                case '35':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(172,122,224,1.0)',
+            }
+                    break;
+                case '36':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,220,201,1.0)',
+            }
+                    break;
+                case '4':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(89,232,27,1.0)',
+            }
+                    break;
+                case '57':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,214,37,1.0)',
+            }
+                    break;
+                case '58':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,207,208,1.0)',
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,20,210,1.0)',
+            }
+                    break;
+                case '61':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,209,43,1.0)',
+            }
+                    break;
+                case '62':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(77,126,205,1.0)',
+            }
+                    break;
+                case '63':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,223,94,1.0)',
+            }
+                    break;
+                case '64':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,12,203,1.0)',
+            }
+                    break;
+                case '67':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,58,201,1.0)',
+            }
+                    break;
+                case '68':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,90,221,1.0)',
+            }
+                    break;
+                case '69':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,201,146,1.0)',
+            }
+                    break;
+                case '7':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,90,212,1.0)',
+            }
+                    break;
+                case '70':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,209,215,1.0)',
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,148,65,1.0)',
+            }
+                    break;
+                case '9':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,44,140,1.0)',
+            }
+                    break;
+                case 'A1':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,32,118,1.0)',
+            }
+                    break;
+                case 'A17':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(224,106,189,1.0)',
+            }
+                    break;
+                case 'A2':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,237,144,1.0)',
+            }
+                    break;
+                case 'A23':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(181,236,62,1.0)',
+            }
+                    break;
+                case 'A24':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,116,196,1.0)',
+            }
+                    break;
+                case 'A27':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,111,210,1.0)',
+            }
+                    break;
+                case 'A29':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(124,182,221,1.0)',
+            }
+                    break;
+                case 'A3':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,175,126,1.0)',
+            }
+                    break;
+                case 'A30':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,84,81,1.0)',
+            }
+                    break;
+                case 'A31':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,203,164,1.0)',
+            }
+                    break;
+                case 'A4':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(48,75,208,1.0)',
+            }
+                    break;
+                case 'A41':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,131,198,1.0)',
+            }
+                    break;
+                case 'A43':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(92,211,237,1.0)',
+            }
+                    break;
+                case 'A45':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,201,15,1.0)',
+            }
+                    break;
+                case 'A46':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,205,120,1.0)',
+            }
+                    break;
+                case 'A47':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,165,21,1.0)',
+            }
+                    break;
+                case 'A5':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,125,222,1.0)',
+            }
+                    break;
+                case 'A55':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(87,164,205,1.0)',
+            }
+                    break;
+                case 'A59':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,204,96,1.0)',
+            }
+                    break;
+                case 'A6':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,61,50,1.0)',
+            }
+                    break;
+                case 'A60':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,179,232,1.0)',
+            }
+                    break;
+                case 'A7':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,70,91,1.0)',
+            }
+                    break;
+                case 'A8':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,232,93,1.0)',
+            }
+                    break;
+                case 'ARECUNA':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,88,143,1.0)',
+            }
+                    break;
+                case 'B1':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,123,237,1.0)',
+            }
+                    break;
+                case 'B2':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,117,201,1.0)',
+            }
+                    break;
+                case 'B3':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(139,236,142,1.0)',
+            }
+                    break;
+                case 'B4':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,153,131,1.0)',
+            }
+                    break;
+                case 'B5':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,231,130,1.0)',
+            }
+                    break;
+                case 'B6':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(97,236,202,1.0)',
+            }
+                    break;
+                case 'B7':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(70,234,229,1.0)',
+            }
+                    break;
+                case 'B8':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(191,221,109,1.0)',
+            }
+                    break;
+                case 'BARIPETROL':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,188,36,1.0)',
+            }
+                    break;
+                case 'BLOQUE 2 CHEVRON-PDVSA GAS':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(17,17,207,1.0)',
+            }
+                    break;
+                case 'BLOQUE 3 CHEVRON':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,105,55,1.0)',
+            }
+                    break;
+                case 'BLOQUE 4 STATOIL-TOTAL':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,26,140,1.0)',
+            }
+                    break;
+                case 'BLOQUE GOLFO DE PARIA OESTE':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,218,75,1.0)',
+            }
+                    break;
+                case 'BOYACÃ NORTE':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(14,61,230,1.0)',
+            }
+                    break;
+                case 'C1':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,212,111,1.0)',
+            }
+                    break;
+                case 'C2':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,24,77,1.0)',
+            }
+                    break;
+                case 'C22':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,78,48,1.0)',
+            }
+                    break;
+                case 'C3':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,153,204,1.0)',
+            }
+                    break;
+                case 'C39':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,88,221,1.0)',
+            }
+                    break;
+                case 'C4':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,206,116,1.0)',
+            }
+                    break;
+                case 'C42':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,32,51,1.0)',
+            }
+                    break;
+                case 'C44':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,154,101,1.0)',
+            }
+                    break;
+                case 'C50':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,204,108,1.0)',
+            }
+                    break;
+                case 'C51':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,180,203,1.0)',
+            }
+                    break;
+                case 'C52':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(143,236,193,1.0)',
+            }
+                    break;
+                case 'C53':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(187,100,216,1.0)',
+            }
+                    break;
+                case 'C66':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,128,221,1.0)',
+            }
+                    break;
+                case 'GUARICO ORIENTAL':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,222,152,1.0)',
+            }
+                    break;
+                case 'J1':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(91,83,229,1.0)',
+            }
+                    break;
+                case 'J10':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,97,103,1.0)',
+            }
+                    break;
+                case 'J11':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,216,102,1.0)',
+            }
+                    break;
+                case 'J12':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,234,170,1.0)',
+            }
+                    break;
+                case 'J13':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(111,32,215,1.0)',
+            }
+                    break;
+                case 'J3':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,229,61,1.0)',
+            }
+                    break;
+                case 'J32':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(78,217,32,1.0)',
+            }
+                    break;
+                case 'J33':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(235,133,70,1.0)',
+            }
+                    break;
+                case 'J38':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,97,224,1.0)',
+            }
+                    break;
+                case 'J48':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(116,90,210,1.0)',
+            }
+                    break;
+                case 'J49':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(44,148,232,1.0)',
+            }
+                    break;
+                case 'J5':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,236,48,1.0)',
+            }
+                    break;
+                case 'J54':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,74,101,1.0)',
+            }
+                    break;
+                case 'J56':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,38,108,1.0)',
+            }
+                    break;
+                case 'J7':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(126,222,214,1.0)',
+            }
+                    break;
+                case 'J8':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,166,50,1.0)',
+            }
+                    break;
+                case 'J9':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(214,204,59,1.0)',
+            }
+                    break;
+                case 'PETRO SAN FELIX':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(126,218,46,1.0)',
+            }
+                    break;
+                case 'PUNTA PESCADOR':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,124,233,1.0)',
+            }
+                    break;
+                case 'QUIRIQUIRE GAS':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,65,212,1.0)',
+            }
+                    break;
+                case 'SAN DIEGO NORTE':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(177,109,213,1.0)',
+            }
+                    break;
+                case 'TIZNADO':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(47,188,209,1.0)',
+            }
+                    break;
+                case 'YUCAL PLACER NORTE':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,206,231,1.0)',
+            }
+                    break;
+                case 'YUCAL PLACER SUR':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,161,104,1.0)',
+            }
+                    break;
+                case 'ZAMACA OESTE':
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,171,143,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,133,135,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_BLOQUES_EM_FPO_2018_F_0');
+        map.getPane('pane_BLOQUES_EM_FPO_2018_F_0').style.zIndex = 400;
+        map.getPane('pane_BLOQUES_EM_FPO_2018_F_0').style['mix-blend-mode'] = 'normal';
+        var layer_BLOQUES_EM_FPO_2018_F_0 = new L.geoJson(json_BLOQUES_EM_FPO_2018_F_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BLOQUES_EM_FPO_2018_F_0',
+            onEachFeature: pop_BLOQUES_EM_FPO_2018_F_0,
+            style: style_BLOQUES_EM_FPO_2018_F_0_0,
+        });
+        bounds_group.addLayer(layer_BLOQUES_EM_FPO_2018_F_0);
+        map.addLayer(layer_BLOQUES_EM_FPO_2018_F_0);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'BLOQUES_EM_FPO_2018_F<br /><table><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_101.png" /></td><td>10</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_112.png" /></td><td>11</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_123.png" /></td><td>12</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_134.png" /></td><td>13</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_145.png" /></td><td>14</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_156.png" /></td><td>15</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_167.png" /></td><td>16</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_188.png" /></td><td>18</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_29.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_2010.png" /></td><td>20</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_2611.png" /></td><td>26</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_2812.png" /></td><td>28</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_313.png" /></td><td>3</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_3414.png" /></td><td>34</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_3515.png" /></td><td>35</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_3616.png" /></td><td>36</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_417.png" /></td><td>4</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_5718.png" /></td><td>57</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_5819.png" /></td><td>58</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_620.png" /></td><td>6</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6121.png" /></td><td>61</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6222.png" /></td><td>62</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6323.png" /></td><td>63</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6424.png" /></td><td>64</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6725.png" /></td><td>67</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6826.png" /></td><td>68</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_6927.png" /></td><td>69</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_728.png" /></td><td>7</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_7029.png" /></td><td>70</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_830.png" /></td><td>8</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_931.png" /></td><td>9</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A132.png" /></td><td>A1</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A1733.png" /></td><td>A17</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A234.png" /></td><td>A2</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A2335.png" /></td><td>A23</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A2436.png" /></td><td>A24</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A2737.png" /></td><td>A27</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A2938.png" /></td><td>A29</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A339.png" /></td><td>A3</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A3040.png" /></td><td>A30</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A3141.png" /></td><td>A31</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A442.png" /></td><td>A4</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A4143.png" /></td><td>A41</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A4344.png" /></td><td>A43</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A4545.png" /></td><td>A45</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A4646.png" /></td><td>A46</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A4747.png" /></td><td>A47</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A548.png" /></td><td>A5</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A5549.png" /></td><td>A55</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A5950.png" /></td><td>A59</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A651.png" /></td><td>A6</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A6052.png" /></td><td>A60</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A753.png" /></td><td>A7</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_A854.png" /></td><td>A8</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_ARECUNA55.png" /></td><td>ARECUNA</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B156.png" /></td><td>B1</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B257.png" /></td><td>B2</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B358.png" /></td><td>B3</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B459.png" /></td><td>B4</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B560.png" /></td><td>B5</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B661.png" /></td><td>B6</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B762.png" /></td><td>B7</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_B863.png" /></td><td>B8</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BARIPETROL64.png" /></td><td>BARIPETROL</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BLOQUE2CHEVRONPDVSAGAS65.png" /></td><td>BLOQUE 2 CHEVRON-PDVSA GAS</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BLOQUE3CHEVRON66.png" /></td><td>BLOQUE 3 CHEVRON</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BLOQUE4STATOILTOTAL67.png" /></td><td>BLOQUE 4 STATOIL-TOTAL</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BLOQUEGOLFODEPARIAOESTE68.png" /></td><td>BLOQUE GOLFO DE PARIA OESTE</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_BOYACNORTE69.png" /></td><td>BOYACÃ NORTE</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C170.png" /></td><td>C1</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C271.png" /></td><td>C2</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C2272.png" /></td><td>C22</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C373.png" /></td><td>C3</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C3974.png" /></td><td>C39</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C475.png" /></td><td>C4</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C4276.png" /></td><td>C42</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C4477.png" /></td><td>C44</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C5078.png" /></td><td>C50</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C5179.png" /></td><td>C51</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C5280.png" /></td><td>C52</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C5381.png" /></td><td>C53</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_C6682.png" /></td><td>C66</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_GUARICOORIENTAL83.png" /></td><td>GUARICO ORIENTAL</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J184.png" /></td><td>J1</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J1085.png" /></td><td>J10</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J1186.png" /></td><td>J11</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J1287.png" /></td><td>J12</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J1388.png" /></td><td>J13</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J389.png" /></td><td>J3</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J3290.png" /></td><td>J32</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J3391.png" /></td><td>J33</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J3892.png" /></td><td>J38</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J4893.png" /></td><td>J48</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J4994.png" /></td><td>J49</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J595.png" /></td><td>J5</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J5496.png" /></td><td>J54</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J5697.png" /></td><td>J56</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J798.png" /></td><td>J7</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J899.png" /></td><td>J8</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_J9100.png" /></td><td>J9</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_PETROSANFELIX101.png" /></td><td>PETRO SAN FELIX</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_PUNTAPESCADOR102.png" /></td><td>PUNTA PESCADOR</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_QUIRIQUIREGAS103.png" /></td><td>QUIRIQUIRE GAS</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_SANDIEGONORTE104.png" /></td><td>SAN DIEGO NORTE</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_TIZNADO105.png" /></td><td>TIZNADO</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_YUCALPLACERNORTE106.png" /></td><td>YUCAL PLACER NORTE</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_YUCALPLACERSUR107.png" /></td><td>YUCAL PLACER SUR</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_ZAMACAOESTE108.png" /></td><td>ZAMACA OESTE</td></tr><tr><td style="text-align: center;"><img src="legend/BLOQUES_EM_FPO_2018_F_0_109.png" /></td><td></td></tr></table>': layer_BLOQUES_EM_FPO_2018_F_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
